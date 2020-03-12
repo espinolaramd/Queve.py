@@ -10,7 +10,7 @@ class Node:
 class LinkedListTail:
     def __init__(self):
         self.head = None
-        self.tail = None
+        self.tail = Node(None)
 
 
     def __repr__(self):
@@ -23,7 +23,7 @@ class LinkedListTail:
 
     def push_head(self, data):
         new_node = Node(data=data)
-        if self.head :
+        if self.head is not None:
             new_node.next = self.head
             self.head = new_node
         else:
@@ -33,13 +33,20 @@ class LinkedListTail:
 
     def push_end(self, data):
         new_node = Node(data)
-        self.tail.next = new_node
-        self.tail = new_node
+        if self.head is not None:
+            self.tail.next = new_node
+            self.tail = new_node
+        else:
+            self.head = new_node
+            self.tail = self.head
 
     def remove_head(self):
         new_node = self.head
         self.head = self.head.next
-        return new_node
+        return new_node.data
 
-    
-
+myList = LinkedListTail()
+myList.push_head(10)
+myList.push_head(5)
+myList.push_end(3)
+print(myList.remove_head())
