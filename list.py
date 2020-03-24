@@ -45,8 +45,4 @@ class LinkedListTail:
         self.head = self.head.next
         return new_node.data
 
-myList = LinkedListTail()
-myList.push_head(10)
-myList.push_head(5)
-myList.push_end(3)
-print(myList.remove_head())
+
